@@ -33,7 +33,7 @@
     "scrape": "tsx src/cli.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepack": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
