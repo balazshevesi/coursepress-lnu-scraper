@@ -1,0 +1,52 @@
+{
+  "name": "coursepress-lnu-scraper",
+  "version": "0.1.0",
+  "description": "Export a CoursePress course to structured Markdown, with optional local assets.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Balázs Hevesi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balazshevesi/coursepress-lnu-scraper.git"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "bin": {
+    "coursepress-scrape": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit && tsc --project tsconfig.test.json",
+    "test": "tsx --test test/*.test.ts",
+    "scrape": "tsx src/cli.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "marked": "^18.2.0",
+    "robots-parser": "^3.0.1",
+    "turndown": "^7.2.5",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/turndown": "^5.0.6",
+    "prettier": "^3.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
