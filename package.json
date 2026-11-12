@@ -13,7 +13,9 @@
     "node": ">=22.19.0"
   },
   "bin": {
-    "coursepress-scrape": "dist/cli.js"
+    "coursepress-lnu-scraper": "dist/cli.js",
+    "coursepress-scrape": "dist/cli.js",
+    "coursepress-exclude-courses": "scripts/exclude-courses.mjs"
   },
   "exports": {
     ".": {

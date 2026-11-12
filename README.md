@@ -27,13 +27,13 @@ npx --yes github:balazshevesi/coursepress-lnu-scraper 'https://coursepress.lnu.s
 
 The destination must be a **new directory**. Choose a different `--output` path for another export; existing exports are never overwritten. The default `courses/` directory is ignored by Git. Add `--help` instead of a URL to see all options.
 
-To also add the root `courses/` directory to this checkout's local `.git/info/exclude`, run the separate script:
+To add the root `courses/` directory to any repository's local `.git/info/exclude`, run this **from inside that repository**. No clone or installation is needed:
 
 ```sh
-npm run exclude:courses
+npx --yes --package=github:balazshevesi/coursepress-lnu-scraper coursepress-exclude-courses
 ```
 
-It preserves existing entries and skips the rule if it is already present. This is a local Git setting; it does not change tracked ignore files or untrack files already committed. To use it in another repository, run `node /path/to/coursepress-lnu-scraper/scripts/exclude-courses.mjs` from inside that repository.
+It preserves existing entries and skips the rule if it is already present. This is a local Git setting; it does not change tracked ignore files or untrack files already committed. From a local checkout of this scraper, `npm run exclude:courses` also works.
 
 ## Programmatic use
 
