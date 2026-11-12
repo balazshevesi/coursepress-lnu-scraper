@@ -11,33 +11,21 @@ Export a Linnaeus University CoursePress course to a folder of Markdown files. G
 
 ## Get started
 
-Requires **Node.js 22.19 or later** and npm.
+Requires **Node.js 22.19 or later**, npm, and Git. Run this from the folder where you want to save your course:
 
 ```sh
-git clone https://github.com/balazshevesi/coursepress-lnu-scraper.git
-cd coursepress-lnu-scraper
-npm ci
-
-# Markdown only
-npm run scrape -- https://coursepress.lnu.se/courses/web-development/
-
-# Markdown with images and attachments, starting inside another course
-npm run scrape -- https://coursepress.lnu.se/kurser/mjukvarutestning/02-course-content/ \
-  --assets --output courses/software-testing
+npx --yes github:balazshevesi/coursepress-lnu-scraper 'https://coursepress.lnu.se/courses/web-development/'
 ```
 
-The destination must be a **new directory**. Choose a different `--output` path for another export; existing exports are never overwritten. The default `courses/` directory is ignored by Git.
+Replace the URL with **any page in your course**. The command downloads and runs the scraper automatically, then saves the Markdown files and course index in `./courses/<course>/`.
 
-To use the compiled command:
+To include images and attachments, add `--assets`. You can also choose where to save the export:
 
 ```sh
-npm run build
-node dist/cli.js https://coursepress.lnu.se/courses/web-development/ --assets
-
-# Optional: make coursepress-scrape available on your PATH
-npm link
-coursepress-scrape --help
+npx --yes github:balazshevesi/coursepress-lnu-scraper 'https://coursepress.lnu.se/kurser/mjukvarutestning/02-course-content/' --assets --output courses/software-testing
 ```
+
+The destination must be a **new directory**. Choose a different `--output` path for another export; existing exports are never overwritten. The default `courses/` directory is ignored by Git. Add `--help` instead of a URL to see all options.
 
 ## Programmatic use
 
@@ -125,11 +113,16 @@ Use course material according to its licence and your course's rules. The MIT li
 ## Development
 
 ```sh
+git clone https://github.com/balazshevesi/coursepress-lnu-scraper.git
+cd coursepress-lnu-scraper
 npm ci
 npm run check
 npm test
 npm run format:check
 npm run build
+
+# Run from the local checkout
+npm run scrape -- https://coursepress.lnu.se/courses/web-development/
 ```
 
 Tests use a local HTTP server and cover nested starting URLs, both layouts, sidebar order, sitemaps, Markdown fidelity, local links, asset deduplication, robots rules, redirect boundaries, download limits, and existing-directory protection. CI runs the checks on Node.js 22 and 24.
