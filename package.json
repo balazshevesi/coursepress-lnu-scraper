@@ -23,6 +23,7 @@
   },
   "files": [
     "dist",
+    "scripts/exclude-courses.mjs",
     "README.md",
     "LICENSE"
   ],
@@ -31,6 +32,7 @@
     "check": "tsc --noEmit && tsc --project tsconfig.test.json",
     "test": "tsx --test test/*.test.ts",
     "scrape": "tsx src/cli.ts",
+    "exclude:courses": "node scripts/exclude-courses.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "npm run build"
